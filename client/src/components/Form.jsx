@@ -1,8 +1,6 @@
-import { GrFormClose } from "react-icons/gr"
 import { IoMdClose } from "react-icons/io"
 
 import styles from "../style";
-import { level1 } from "../images";
 
 const Form = () => {
   const formInput = `appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none  focus:border-gray-500`
