@@ -14,3 +14,10 @@ export const getTasks = async(req, res) => {
     res.status(404).json({ message: error.message });
   }
 }
+
+export const addTask = async(req, res) => {
+  const task = req.body;
+  const newTask = new Task(task)
+}
+
+export default router;
