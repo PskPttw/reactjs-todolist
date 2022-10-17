@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const taskSchema = mongoose.Schema ({
   title: String,
   dueDateTime: Date,
-  priority: String,
+  priority: Number,
   status: String
 })
 
