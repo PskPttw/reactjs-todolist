@@ -4,11 +4,11 @@ import * as api from "../api";
 const initialState = { loading: false, tasks: [], error: "" };
 
 export const fetchTasks = createAsyncThunk("task/fetchTasks", async () => {
-  return api.fetchTasks().then(res => res.data)
+  return api.fetchTasks().then(res => res.data);
 });
 
 export const addTask = createAsyncThunk("task/addTask", async (task) => {
-  const { data } = await api.fetchTasks(task);
+  const { data } = await api.addTask(task);
   return data;
 });
 
