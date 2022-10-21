@@ -17,7 +17,7 @@ const Todolist = () => {
 
   return (
     <div className= "grid grid-cols-3 gap-4 w-5/6">
-      <div className= "w-full bg-[#FFF9B0] mt-4 rounded-md">
+      <div className= "w-full bg-[#D7F0E0] mt-4 rounded-md">
         <div className= "flex justify-between">
           <div className= "my-6 pl-8 font-opensans font-bold text-xl">
             To Do
@@ -71,7 +71,7 @@ const Todolist = () => {
           </div>
         </div> */}
       </div>
-      <div className= "flex bg-[#FFF9B0] mt-4 rounded-md justify-between">
+      <div className= "flex bg-[#D7F0E0] mt-4 rounded-md justify-between">
         <div className= "my-6 pl-8 font-opensans font-bold text-xl">
           Doing
         </div>
@@ -79,7 +79,7 @@ const Todolist = () => {
           3
         </div>
       </div>
-      <div className= "flex bg-[#FFF9B0] mt-4 rounded-md justify-between">
+      <div className= "flex bg-[#D7F0E0] mt-4 rounded-md justify-between">
         <div className= "my-6 pl-8 font-opensans font-bold text-xl">
           Done
         </div>
