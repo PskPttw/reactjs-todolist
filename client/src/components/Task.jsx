@@ -24,7 +24,7 @@ const Task = ({ title, dueDateTime, status, priority }) => {
 
   return (
     <div className= "px-8">
-      <div className= "bg-[#E0D7F0] flex w-full shadow-md px-2 py-2 rounded-md mb-4 justify-between">
+      <div className= "bg-[#FFFFFF] flex w-full shadow-md px-2 py-2 rounded-md mb-4 justify-between">
         <div className= "flex flex-row">
           <img src= { prioritySelector(priority) } className= "pr-2 mt-1 w-10 object-contain"/>
           <div className= "flex flex-col">

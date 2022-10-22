@@ -4,13 +4,16 @@ import { Provider } from "react-redux";
 
 import App from "./App";
 import store from "./store";
+import { FormContextProvider } from "./context/formContext";
 
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store= { store }>
-      <App />
+      <FormContextProvider>
+        <App />
+      </FormContextProvider>
     </Provider>
   </React.StrictMode>
 );
