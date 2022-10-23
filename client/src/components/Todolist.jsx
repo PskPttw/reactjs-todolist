@@ -23,7 +23,7 @@ const Todolist = () => {
             To Do
           </div>
           <div className= "my-6 pr-8 font-opensans font-bold text-xl">
-            3
+            { tasks.length }
           </div>
         </div>
         { tasks.map((task, i) => (

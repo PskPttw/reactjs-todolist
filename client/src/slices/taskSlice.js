@@ -8,6 +8,7 @@ export const fetchTasks = createAsyncThunk("task/fetchTasks", async () => {
 });
 
 export const addTask = createAsyncThunk("task/addTask", async (task) => {
+  console.log(task)
   const { data } = await api.addTask(task);
   return data;
 });

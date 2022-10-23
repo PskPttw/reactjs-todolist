@@ -11,11 +11,11 @@ const Task = ({ title, dueDateTime, status, priority }) => {
 
   const prioritySelector = (priority) => {
     switch(priority) {
-      case 1:
+      case "1":
         return level1;
-      case 2:
+      case "2":
         return level2;
-      case 3:
+      case "3":
         return level3;
       default:
         return level1;
