@@ -19,11 +19,14 @@ const Form = ({ currentId, setCurrentId }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    let preSendData = { title: taskData.title, dueDateTime: new Date(taskData.dueDate.concat("T", taskData.dueTime).concat(":00.000Z")).toISOString(), priority: taskData.priority, status: taskData.status }
+
     if(currentId === 0) {
-      dispatch(addTask(taskData));
+      dispatch(addTask(preSendData));
     } else {
-      dispatch(updateTask(taskData));
+      dispatch(updateTask(preSendData));
     }
+    clear();
   }
 
   const handleChange = (e) => {
@@ -47,7 +50,7 @@ const Form = ({ currentId, setCurrentId }) => {
               <IoMdClose className= "fill-[#FF577F] cursor-pointer" onClick= { () => setFormToggle(false) }/>
           </button>
         </div>
-        <form className= "relative p-6 flex-auto bg-[#C8B0FF] rounded-b" onSubmit= { e => handleSubmit(e) }>
+        <form className= "relative p-6 flex-auto bg-[#C8B0FF] rounded-b" onSubmit= { handleSubmit }>
           <label className= "font-opensans font-semibold" htmlFor= "title">Name</label>
           <input className= "appearance-none border-2 border-gray-200 rounded w-full mb-4 py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:border-[#00FBDD] font-opensans" type= "text" id= "title" value= { taskData.title } onChange= { e => handleChange(e) }/>
           <label className= "font-opensans font-semibold" htmlFor= "dueDate">Date</label>

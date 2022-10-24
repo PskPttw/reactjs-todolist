@@ -33,6 +33,7 @@ const Todolist = () => {
             dueDateTime= { task.dueDateTime }
             status= { task.status }
             priority= { task.priority }
+            id= { task._id }
           />
         )) }
       </div>

@@ -9,7 +9,7 @@ import styles from "../style";
 
 const Navbar = () => {
   const { formToggle, setFormToggle } = useContext(FormContext);
-  const [currentId, setCurrentId] = useState(0)
+  const [currentId, setCurrentId] = useState(0);
   return (
     <div className= "bg-[#B8C0FF] w-full overflow-hidden">
       <div className= {`${ styles.paddingX } ${ styles.flexCenter }`}>

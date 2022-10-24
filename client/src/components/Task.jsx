@@ -1,13 +1,17 @@
+import { useContext } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { BiCalendarEvent, BiTime } from "react-icons/bi";
 import { FiEdit } from "react-icons/fi";
+
+import { FormContext } from "../context/formContext";
 import { level1, level2, level3 } from "../images";
 
-const Task = ({ title, dueDateTime, status, priority }) => {
-  // const d = new Date(2022, 11, 17, 15, 24, 0);
+const Task = ({ title, dueDateTime, status, priority, id }) => {
   const dateFromJSON = new Date(dueDateTime);
   const dueTime = dateFromJSON.toLocaleString("en-US", { hour: "numeric", minute: "numeric", hour12: false });
   const dueDate = dateFromJSON.toLocaleDateString("en-GB", { day: "numeric", month: "short", "year": "2-digit" })
+
+  const { formToggle, setFormToggle } = useContext(FormContext);
 
   const prioritySelector = (priority) => {
     switch(priority) {
@@ -20,6 +24,10 @@ const Task = ({ title, dueDateTime, status, priority }) => {
       default:
         return level1;
     }
+  }
+
+  const setIdtoEdit = (e, id) => {
+    e.stopPropagation();
   }
 
   return (
@@ -45,6 +53,7 @@ const Task = ({ title, dueDateTime, status, priority }) => {
           <button className= "text-black text-sm font-opensans">Change</button>
         </div>
       </div>
+      { formToggle && <Form currentId= { currentId } setCurrentId= { setCurrentId }/> }    
     </div>
   );
 }
