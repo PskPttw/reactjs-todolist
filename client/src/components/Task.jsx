@@ -4,15 +4,18 @@ import { BiCalendarEvent, BiTime } from "react-icons/bi";
 import { FiEdit } from "react-icons/fi";
 
 import { FormContext } from "../context/formContext";
+import { TaskContext } from "../context/taskContext";
+import Form from "./Form";
 import { level1, level2, level3 } from "../images";
 
 const Task = ({ title, dueDateTime, status, priority, id }) => {
   const dateFromJSON = new Date(dueDateTime);
   const dueTime = dateFromJSON.toLocaleString("en-US", { hour: "numeric", minute: "numeric", hour12: false });
-  const dueDate = dateFromJSON.toLocaleDateString("en-GB", { day: "numeric", month: "short", "year": "2-digit" })
+  const dueDate = dateFromJSON.toLocaleDateString("en-GB", { day: "numeric", month: "short", "year": "2-digit" });
 
   const { formToggle, setFormToggle } = useContext(FormContext);
-
+  const { setCurrentId } = useContext(TaskContext);
+  
   const prioritySelector = (priority) => {
     switch(priority) {
       case "1":
@@ -28,6 +31,8 @@ const Task = ({ title, dueDateTime, status, priority, id }) => {
 
   const setIdtoEdit = (e, id) => {
     e.stopPropagation();
+    setFormToggle(true);
+    setCurrentId(id);
   }
 
   return (
@@ -47,13 +52,13 @@ const Task = ({ title, dueDateTime, status, priority, id }) => {
         </div>
         <div className= "right-0 flex flex-col">
           <div className= "flex flex-row mb-3 justify-between">
-            <FiEdit className= "text-black text-sm font-semibold font-opensans cursor-pointer" size= "18px"/>
+            <FiEdit className= "text-black text-sm font-semibold font-opensans cursor-pointer" size= "18px" onClick= { e => setIdtoEdit(e, id) }/>
             <AiFillDelete className= "text-black text-sm font-semibold font-opensans cursor-pointer" size= "18px"/>
           </div>
           <button className= "text-black text-sm font-opensans">Change</button>
         </div>
       </div>
-      { formToggle && <Form currentId= { currentId } setCurrentId= { setCurrentId }/> }    
+      { formToggle && <Form /> }    
     </div>
   );
 }

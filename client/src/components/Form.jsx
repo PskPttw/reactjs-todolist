@@ -1,18 +1,20 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io"
 import { useDispatch, useSelector } from "react-redux";
 
 import { FormContext } from "../context/formContext";
+import { TaskContext } from "../context/taskContext";
 import { addTask, updateTask } from "../slices/taskSlice";
 import styles from "../style";
 
-const Form = ({ currentId, setCurrentId }) => {
+const Form = () => {
   const formInput = `appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none  focus:border-gray-500`
   const label = "block uppercase tracking-wide text-[#E488A1] text-lg font-montserrat font-semibold mb-2 mr-3"
   const initialState = { title: "", dueDate: "", dueTime: "", priority: "1", status: "todo" }
 
   const dispatch = useDispatch();
   const { formToggle, setFormToggle } = useContext(FormContext);
+  const { currentId, setCurrentId } = useContext(TaskContext);
   const [taskData, setTaskData] = useState(initialState);
   const task = useSelector((state) => (currentId ? state.task.tasks.find((task) => task._id === currentId) : null));
 
@@ -37,6 +39,20 @@ const Form = ({ currentId, setCurrentId }) => {
     setCurrentId(0);
     setTaskData(initialState);
   }
+
+  useEffect(() => {
+    if(task) { 
+      const dateFromJSON = new Date(task.dueDateTime);
+      const year = dateFromJSON.getFullYear();
+      const month = (dateFromJSON.getMonth() + 1).toString().padStart(2, "0");
+      const date = dateFromJSON.getDate().toString().padStart(2, "0");
+
+      const dueDate = year + "-" + month + "-" + date;      
+      const dueTime = dateFromJSON.toLocaleString("en-US", { hour: "numeric", minute: "numeric", hour12: false });
+      setTaskData({ title: task.title, dueDate, dueTime, priority: task.priority, status: task.status });
+    }
+  }, [task]);
+  
 
   return (
     <div className= "justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none backdrop-blur-sm">

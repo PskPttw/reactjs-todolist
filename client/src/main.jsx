@@ -5,15 +5,18 @@ import { Provider } from "react-redux";
 import App from "./App";
 import store from "./store";
 import { FormContextProvider } from "./context/formContext";
+import { TaskContextProvider } from "./context/taskContext";
 
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store= { store }>
-      <FormContextProvider>
-        <App />
-      </FormContextProvider>
+      <TaskContextProvider>
+        <FormContextProvider>
+          <App />
+        </FormContextProvider>
+      </TaskContextProvider>
     </Provider>
   </React.StrictMode>
 );
