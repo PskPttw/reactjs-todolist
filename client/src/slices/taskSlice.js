@@ -13,7 +13,7 @@ export const addTask = createAsyncThunk("task/addTask", async (task) => {
 });
 
 export const updateTask = createAsyncThunk("task/updateTask", async (task) => {
-  const { data } = await api.updateTask(task._id, { title: task.title, dueDateTime: task.dueDateTime, priority: task.priority, status: task.status });
+  const { data } = await api.updateTask(task.id, { title: task.title, dueDateTime: task.dueDateTime, priority: task.priority, status: task.status });
   return data;
 });
 
